@@ -1,5 +1,5 @@
 import timeago from "@/lib/timeago"
-
+import Link from "next/link"
 
 export default function Post({post}){
     return (
@@ -7,7 +7,9 @@ export default function Post({post}){
       <div className='flex flex-shrink-0 pb-0'>
         <div className='flex-shrink-0 block group'>
         <div className='flex items-center text-gray-800'>
-          /r/{post.subredditName} Posted By {post.author.username}{' '}
+        <Link href={`/r/${post.subredditName}`} className='mr-2 underline'>
+							/r/{post.subredditName}
+            </Link> Posted By {post.author.username}{' '}
           {timeago.format(new Date(post.createdAt))}
         </div>
         </div>
