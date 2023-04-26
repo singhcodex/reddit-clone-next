@@ -18,10 +18,20 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  background: linear(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    filter: invert(100%);
+  }
+
+  img {
+    filter: invert(100%);
+  }
 }
