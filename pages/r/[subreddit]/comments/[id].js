@@ -12,8 +12,7 @@ import { getServerSession } from "next-auth";
 
 /** @param {import('next').InferGetServerSidePropsType<typeof getServerSideProps> } props */
 export default function Post({ subreddit, post, vote, votes }) {
-  if (!post) return <p className='text-center p-5'>Post does not exist 😞</p>
-
+  
   const router = useRouter()
   const { data: session, status } = useSession()
 
@@ -22,6 +21,9 @@ export default function Post({ subreddit, post, vote, votes }) {
   if (loading) {
     return null
   }
+
+  if (!post) return <p className='text-center p-5'>Post does not exist 😞</p>
+
 
   const sendVote = async (up) => {
     await fetch('/api/vote', {
@@ -103,7 +105,7 @@ export default function Post({ subreddit, post, vote, votes }) {
             </p>
           )}
 
-          <Comments comments={post.comments} />
+          <Comments comments={post.comments} post={post}/>
         </div>
 
       </div>
